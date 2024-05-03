@@ -1,0 +1,156 @@
+body{
+    height: 100%;
+    margin: 0;
+    background-image: url("img/background_main.jpg");
+    background-size: cover;
+}
+
+
+
+.header_pc img,.header_mobile img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.header_pc ul{
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.header_pc ul li{
+    margin-left: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.5s;
+    border: hidden;
+}
+
+.header_pc ul li:hover{
+    background-color: #c2c2c222;
+}
+
+main{
+    margin:0;
+}
+
+
+
+main img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top:50px;
+}
+
+main button{
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    position:relative;
+    bottom: 25px;
+    background-color: #f06043;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #e27f5b;
+}
+
+
+footer{
+    margin:0;
+    background-color: #515151;
+
+}
+
+.footer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+
+
+.sidenav{
+    margin: auto 0;
+    cursor: pointer;
+}
+
+.sidenav div{
+    width: 35px;
+    height: 3px;
+    background-color: black;
+    margin:6px 0;
+    transition: 0.4s;
+
+}
+
+
+
+
+
+
+
+.open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+  
+.open .bar2 {
+    opacity: 0;
+}
+  
+.open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-6px, -8px);
+}
+  
+.open .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+  
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: calc(100vh - 50px);
+    width: 100%;
+}
+  
+.mobile-menu li {
+    margin-bottom: 10px;
+}
+
+.header_mobile{
+    display: none;
+}
+
+
+
+@media only screen and (max-width:600px){
+    .header_pc{display: none;}
+    .header_mobile{display: block;}
+
+
+
+}

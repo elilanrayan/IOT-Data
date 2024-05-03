@@ -1,0 +1,117 @@
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #122932;
+}
+
+header img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  justify-content: space-around;
+}
+
+header ul li {
+  margin-left: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.5s;
+  border: hidden;
+}
+
+header ul li:hover {
+  background-color: #c2c2c222;
+}
+
+/* Navigation mobile */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.259);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar li {
+  width: 100%;
+}
+.sidebar a {
+  width: 100%;
+}
+
+.menu-button {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 20px;
+}
+
+/* Stylisation du formulaire */
+
+
+main{
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+.login h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Footer */
+
+footer {
+  margin: 0;
+  margin-top: 100px;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #122932;
+  border-top: 1px solid black;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+  .hideOnMobile {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    width: 100%;
+  }
+}

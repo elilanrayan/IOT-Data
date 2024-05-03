@@ -1,0 +1,184 @@
+body{
+    height: 100%;
+    margin: 0;
+    background-color: rgba(2, 37, 25, 0.665);
+
+}
+
+
+header img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+header ul{
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+}
+
+header ul li{
+    margin-left: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.5s;
+    border: hidden;
+}
+
+header ul li:hover{
+    background-color: #c2c2c222;
+}
+
+.sidebar{
+    position: fixed;
+    top:0;
+    right:0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.259);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0,0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+.sidebar a{
+    width: 100%;
+}
+
+.menu-button{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
+
+
+
+
+.character{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.info h2{
+    color: rgb(3, 3, 56)
+}
+
+
+
+
+.character img{
+    width: 250px;
+    border-radius: 5px;
+    border: 2px solid;
+    padding: 15px;
+
+}
+
+.character a{
+ 
+
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.7;
+  margin-top: 20%;
+
+}
+
+.character a:hover{
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+footer{
+    margin:0;
+    margin-top:170px;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #122932;
+    border-top: 1px solid black;
+
+}
+
+.footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+
+
+@media (max-width:800px) {
+    .hideOnMobile{
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+    
+}
+
+@media (max-width:400px){
+    .sidebar{
+        width: 100%;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+

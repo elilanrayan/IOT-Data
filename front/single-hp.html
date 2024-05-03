@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="single-hp.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <img src="img/logo.png" alt="logo_site" width="auto" height="100px" />
+      <div class="menu">
+        <nav>
+          <ul>
+            <li class="hideOnMobile">Accueil</li>
+            <li class="hideOnMobile">Cartes</li>
+            <li class="hideOnMobile">S'inscrire</li>
+            <li class="hideOnMobile">Se connecter</li>
+            <li class="menu-button" onclick="showSidebar()">➡️</li>
+          </ul>
+          <ul class="sidebar">
+            <li onclick="hideSidebar()">❌</li>
+            <li>Accueil</li>
+            <li>Cartes</li>
+            <li>S'inscrire</li>
+            <li>Se connecter</li>
+          </ul>
+        </nav>
+
+        <script>
+          function showSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.style.display = "flex";
+          }
+
+          function hideSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.style.display = "none";
+          }
+        </script>
+      </div>
+    </header>
+
+    <main>
+      <div class="character"></div>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <div class="foot1">
+          <p>Informations</p>
+          <p>Nous contacter</p>
+          <p>Notre histoire</p>
+          <p>Parrainage</p>
+          <p>Livraisons</p>
+        </div>
+
+        <div class="foot2">
+          <p>SAV</p>
+          <p>Support téléphonique</p>
+          <p>Support Chat</p>
+          <p>Support E-Mail</p>
+        </div>
+
+        <div class="foot3">
+          <p>Licence</p>
+          <p>Créer des cartes</p>
+          <p>CGV</p>
+          <p>Mentions légales</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function fetchCharacter() {
+        let url = window.location.search;
+        let slug = new URLSearchParams(url).get("slug");
+        return fetch("https://hp-api.lainocs.fr/characters/" + slug).then(
+          (response) => response.json()
+        );
+      }
+
+      async function displayCharacter() {
+        const data = await fetchCharacter();
+
+        document.querySelector(".character").innerHTML = `
+            <div class="nom">
+                <h1>${data.name}</h1>
+                <img src='${data.image}' alt="${data.name}">
+            </div>
+            <div class="info">
+                <h2> Informations : </h2>
+                <p> Maison: ${data.house}</p>
+                <p>Nom de l'acteur : ${data.actor}</p>
+                <a href="index.html"> Back</a>
+            </div>
+            `;
+        
+
+        fetch("http://192.168.214.43:3000", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ house: data.house}),
+        }).then((response) => response.json());
+      }
+
+      displayCharacter();
+    </script>
+  </body>
+</html>

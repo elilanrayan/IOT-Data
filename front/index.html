@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="hp.css" />
+    <title>Document</title>
+  </head>
+  <body id="body">
+    <header>
+      <img src="img/logo.png" alt="logo_site" width="auto" height="100px" />
+      <div class="menu">
+        <nav>
+          <ul>
+            <li class="hideOnMobile">Accueil</li>
+            <li class="hideOnMobile">Cartes</li>
+            <li class="hideOnMobile"><a href="inscrire.html">S'inscrire</a></li>
+            <li class="hideOnMobile">Se connecter</li>
+            <li class="menu-button" onclick="showSidebar()">➡️</li>
+          </ul>
+          <ul class="sidebar">
+            <!-- Création d'une sidenav -->
+
+            <li onclick="hideSidebar()">❌</li>
+            <li>Accueil</li>
+            <li>Cartes</li>
+            <li>S'inscrire</li>
+            <li>Se connecter</li>
+          </ul>
+        </nav>
+
+        <script>
+          function showSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.style.display = "flex";
+          }
+
+          function hideSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            sidebar.style.display = "none";
+          }
+        </script>
+      </div>
+    </header>
+
+    <div class="filtre">
+      <!-- Bouton filtre -->
+      <button id="griffondor">Griffondor</button>
+      <button id="serpentard">Serpentard</button>
+      <button id="poufsouffle">Poufsouffle</button>
+      <button id="serdaigle">Serdaigle</button>
+    </div>
+
+    <main>
+      <div class="characters"></div>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <div class="foot1">
+          <p>Informations</p>
+          <p>Nous contacter</p>
+          <p>Notre histoire</p>
+          <p>Parrainage</p>
+          <p>Livraisons</p>
+        </div>
+
+        <div class="foot2">
+          <p>SAV</p>
+          <p>Support téléphonique</p>
+          <p>Support Chat</p>
+          <p>Support E-Mail</p>
+        </div>
+
+        <div class="foot3">
+          <p>Licence</p>
+          <p>Créer des cartes</p>
+          <p>CGV</p>
+          <p>Mentions légales</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function fetchCharacters() {
+        return fetch("https://hp-api.lainocs.fr/characters").then((response) =>
+          response.json()
+        );
+      }
+
+      async function displayCharacters() {
+        const data = await fetchCharacters();
+        data.forEach((character) => {
+          document.querySelector(".characters").innerHTML += `
+                        <div class="character">
+                            <a href="single-hp.html?slug=${character.slug}">
+                            <p>${character.name}</p>
+                            <img src="${character.image}" alt="${character.name}"</a>
+                        </div>
+                `;
+        });
+      }
+
+      async function filtreG() {
+        document.querySelector(".characters").innerHTML = "";
+        const data = await fetchCharacters();
+        data.forEach((character) => {
+          if (character.house == "Gryffindor") {
+            document.querySelector(".characters").innerHTML += `
+                        <div class="character">
+                            <a href="single-hp.html?slug=${character.slug}">
+                            <p>${character.name}</p>
+                            <img src="${character.image}" alt="${character.name}"</a>
+                        </div>
+                `;
+          }
+        });
+        body.classList.remove("yellow");
+        body.classList.remove("blue");
+        body.classList.remove("green");
+        body.classList.add("red");
+      }
+
+      async function filtreS() {
+        document.querySelector(".characters").innerHTML = "";
+        const data = await fetchCharacters();
+        data.forEach((character) => {
+          if (character.house == "Slytherin") {
+            document.querySelector(".characters").innerHTML += `
+                        <div class="character">
+                            <a href="single-hp.html?slug=${character.slug}">
+                            <p>${character.name}</p>
+                            <img src="${character.image}" alt="${character.name}"</a>
+                        </div>
+                `;
+          }
+        });
+        body.classList.remove("yellow");
+        body.classList.remove("red");
+        body.classList.remove("blue");
+        body.classList.add("green");
+      }
+
+      async function filtreP() {
+        document.querySelector(".characters").innerHTML = "";
+        const data = await fetchCharacters();
+        data.forEach((character) => {
+          if (character.house == "Hufflepuff") {
+            document.querySelector(".characters").innerHTML += `
+                        <div class="character">
+                            <a href="single-hp.html?slug=${character.slug}">
+                            <p>${character.name}</p>
+                            <img src="${character.image}" alt="${character.name}"</a>
+                        </div>
+                `;
+          }
+        });
+        body.classList.remove("blue");
+        body.classList.remove("red");
+        body.classList.remove("green");
+        body.classList.add("yellow");
+      }
+
+      async function filtreSA() {
+        document.querySelector(".characters").innerHTML = "";
+        const data = await fetchCharacters();
+        data.forEach((character) => {
+          if (character.house == "Ravenclaw") {
+            document.querySelector(".characters").innerHTML += `
+                        <div class="character">
+                            <a href="single-hp.html?slug=${character.slug}">
+                            <p>${character.name}</p>
+                            <img src="${character.image}" alt="${character.name}"</a>
+                        </div>
+                `;
+          }
+        });
+        body.classList.remove("yellow");
+        body.classList.remove("red");
+        body.classList.remove("green");
+
+        body.classList.add("blue");
+      }
+
+      var boutonG = document.getElementById("griffondor");
+      var boutonS = document.getElementById("serpentard");
+      var boutonP = document.getElementById("poufsouffle");
+      var boutonSA = document.getElementById("serdaigle");
+
+      boutonG.addEventListener("click", filtreG);
+      boutonS.addEventListener("click", filtreS);
+      boutonP.addEventListener("click", filtreP);
+      boutonSA.addEventListener("click", filtreSA);
+      displayCharacters();
+    </script>
+  </body>
+</html>
